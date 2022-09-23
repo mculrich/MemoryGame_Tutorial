@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.ImageButton
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import edu.gatech.seclass.myapplication.models.BoardSize
 import edu.gatech.seclass.myapplication.models.MemoryCard
@@ -60,9 +62,17 @@ class MemoryBoardAdapter(
         fun bind(position: Int){
             val memoryCard = cards[position]
             imageButton.setImageResource(if (memoryCard.isFaceUp)
-                                               memoryCard.identifier
-                                         else
-                                             R.drawable.ic_launcher_background)
+                memoryCard.identifier
+            else
+                R.drawable.ic_launcher_background)
+
+            imageButton.alpha = if(memoryCard.isMatched) 0.4f else 1.0f
+
+            //If Match change button to grey
+            val colorStateList = if(memoryCard.isMatched) ContextCompat.getColorStateList(context, R.color.color_grey) else null
+
+            ViewCompat.setBackgroundTintList(imageButton,colorStateList)
+
             imageButton.setOnClickListener(){
                 Log.i(TAG, "Clicked on position $position")
                 cardClickListener.onCardClicked(position)
