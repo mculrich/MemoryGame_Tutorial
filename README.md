@@ -3,7 +3,7 @@ Simple matching memory game.
 
 Game involves flipping over tiles to match images. Match all images to win the game. 
 
-![alt text](./readmeImg/GameImage.png)
+![alt text](https://github.com/mculrich/MemoryGame_Tutorial/tree/main/readmeImg/GameImage.png)
 
 Credit to Rahul Pandey
 
